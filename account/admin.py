@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
 from django.contrib.auth import get_user_model
-
+from .models import Agency
 User = get_user_model()
 
 
@@ -28,3 +28,11 @@ class UserAdmin(DjangoUserAdmin):
         }),
     )
 admin.site.register(User,UserAdmin)
+
+
+class AgencyAdmin(admin.ModelAdmin):
+    list_display = ['name','user']
+    list_per_page = 10
+    search_fields = ['description']
+admin.site.register(Agency, AgencyAdmin)
+    

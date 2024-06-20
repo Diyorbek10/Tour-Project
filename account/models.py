@@ -25,3 +25,17 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self) -> str:
         return f"{self.first_name} {self.last_name}"
+    
+    
+class Agency(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='agency_image',null=True,blank=True)
+    
+    def __str__(self) -> str:
+        return self.name
+
+    class Meta:
+        verbose_name = "Agency"
+        verbose_name_plural = "Agencies"

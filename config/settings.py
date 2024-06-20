@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    #globale
+    #global
     'rest_framework',
     'drf_yasg',
     'rest_framework_simplejwt',
@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     "account.apps.AccountConfig",
     "common.apps.CommonConfig",
     "tour.apps.TourConfig",
+    "booking.apps.BookingConfig"
+    
 ]
 
 
