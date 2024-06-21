@@ -43,13 +43,10 @@ class TourService(BaseModel):
     def __str__(self) -> str:
         return self.name
     
-    # class Meta:
-    #     vebose_name = "Tour Service"
-    #     vebose_name_plural = "Tour Services"
 
 class MediaTour(BaseModel):
-    image = models.ImageField(upload_to='tour_image')
-    video = models.FileField(upload_to="tour_video")
+    image = models.ImageField(upload_to='tour_image',null=True,blank=True)
+    video = models.FileField(upload_to="tour_video",null=True,blank=True)
     tour = models.ForeignKey(Tour,on_delete=models.CASCADE)
     
     def __str__(self) -> str:
