@@ -11,7 +11,7 @@ class CategorySerializer(serializers.ModelSerializer):
         
 class TourSerializer(serializers.ModelSerializer):
     category = CategorySerializer(many=True)
-    agency = AgencySerializer()
+    # agency = AgencySerializer()
     class Meta:
         model = Tour
         fields = '__all__'
