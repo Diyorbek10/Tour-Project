@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework import status 
 from rest_framework.exceptions import AuthenticationFailed
-
+from rest_framework_simplejwt.tokens import AccessToken
 
 
 
@@ -30,17 +30,18 @@ class RegisterView(APIView):
         return Response(serializer.data,status=status.HTTP_201_CREATED)
     
     
-# class LoginView(APIView):
-#     def post(self,request):
-#         email = request.data['email']
-#         password = request.data['password']
+class LoginView(APIView):
+    def post(self,request):
+        print(AccessToken())
+        email = request.data['email']
+        password = request.data['password']
         
-#         user = CustomUser.objects.filter(email=email).first()
+        user = CustomUser.objects.filter(email=email).first()
         
-#         if user is None:
-#             raise AuthenticationFailed("User not found")
+        if user is None:
+            raise AuthenticationFailed("User not found")
         
-#         if not user.check_password(password):
-#             raise AuthenticationFailed("Incorrect password")
+        if not user.check_password(password):
+            raise AuthenticationFailed("Incorrect password")
         
-#         return Response
+        return Response({"message":"Succes"})
