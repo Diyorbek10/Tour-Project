@@ -45,9 +45,13 @@ class TourService(BaseModel):
     
 
 class MediaTour(BaseModel):
-    image = models.ImageField(upload_to='tour_image',null=True,blank=True)
-    video = models.FileField(upload_to="tour_video",null=True,blank=True)
-    tour = models.ForeignKey(Tour,on_delete=models.CASCADE)
+    STATUS = (
+        ('image', 'Image'),
+        ('video', 'Video'),
+    )
+    status = models.CharField(max_length=10, default='image')
+    file = models.FileField(upload_to="tour_video",null=True,blank=True)
+    tour = models.ForeignKey(Tour,on_delete=models.CASCADE, related_name="media")
     
     def __str__(self) -> str:
         return self.tour.name
